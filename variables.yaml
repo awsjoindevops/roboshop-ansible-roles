@@ -1,1 +1,2 @@
 MONGODB_HOST: mongodb.awsjoindevops.online
+REDIS_HOST: redis.awsjoindevops.online
