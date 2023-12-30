@@ -13,7 +13,7 @@
     name: common
     tasks_from: mongodb-setup
 
-- name: systectl service-yaml
+- name: systemctl service-yaml
   ansible.builtin.import_role:
     name: common
     tasks_from: systemd
