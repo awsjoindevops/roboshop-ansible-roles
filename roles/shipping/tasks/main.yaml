@@ -1,21 +1,19 @@
-- name: app-setup
+- name: app setup
   ansible.builtin.import_role:
     name: common
     tasks_from: app-setup
 
-- name: JAVA-setup
+- name: java
   ansible.builtin.import_role:
     name: common
     tasks_from: java
 
-- name: mysql-setup
+- name: mysql setup
   ansible.builtin.import_role:
     name: common
     tasks_from: mysql-setup
 
-- name: systectl service-yaml
+- name: system start
   ansible.builtin.import_role:
     name: common
     tasks_from: systemd
-
-
