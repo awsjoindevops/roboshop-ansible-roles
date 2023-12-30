@@ -8,13 +8,13 @@
     name: mongodb-org-shell
     state: present
 
-- name: get the entries count
+- name: get the catalogue entries count
   ansible.builtin.shell:  mongo --host mongodb.awsjoindevops.online --quiet --eval 'db = db.getSiblingDB("catalogue"); db.products.count()'
   register: products_count
   when: component == "catalogue"
 
 
-- name: get the entries count
+- name: get the user entries count
   ansible.builtin.shell:  mongo --host mongodb.awsjoindevops.online --quiet --eval 'db = db.getSiblingDB("users"); db.users.count()'
   register: users_count
   when: component == "user"
@@ -28,6 +28,6 @@
   when: products_count.stdout == "0"  and component == "catalogue" # keep double quotes
 
 
-- name: "load catalogue data"
+- name: "load user data"
   ansible.builtin.shell: "mongo --host mongodb.awsjoindevops.online < /app/schema/{{component}}.js"
   when: users_count.stdout == "0"  and component == "catalogue" # keep double quotes
