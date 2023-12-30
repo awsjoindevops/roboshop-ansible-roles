@@ -1,12 +1,12 @@
 - name: Copy mongodb repo
   ansible.builtin.copy:
-    src: mongodb.repo
-    dest: /etc/yum.repos.d/mongodb.repo
+   src: mongodb.repo
+   dest: /etc/yum.repos.d/mongodb.repo
 
 - name: Install mongodb client
-  ansible.builtin.dnf:
-    name: mongodb-org-shell
-    state: present
+  ansible.builtin.package:
+   name: mongodb-org-shell
+   state: present
 
 - name: get the catalogue entries count
   ansible.builtin.shell: mongo --host mongodb.awsjoindevops.online --quiet --eval 'db = db.getSiblingDB("catalogue"); db.products.count()'
